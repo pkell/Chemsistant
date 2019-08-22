@@ -1,0 +1,24 @@
+<h2 mat-dialog-title>Edit Compound</h2>
+<mat-dialog-content [formGroup]="form">
+    <div fxLayout="column">
+  <mat-form-field>
+    <input matInput formControlName="code" placeholder="Code">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput formControlName="name" placeholder="Name">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput formControlName="selectivityConditions" placeholder="Selectivity Conditions">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput formControlName="temperature" placeholder="Temperature">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput formControlName="placeholder" placeholder="Placeholder">
+  </mat-form-field>
+</div>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-raised-button color="primary" type="submit">Add</button>
+  <button mat-raised-button type="button">Cancel</button>
+</mat-dialog-actions>

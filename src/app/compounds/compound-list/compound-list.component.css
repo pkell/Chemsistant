@@ -1,0 +1,61 @@
+p {
+    font-family: Lato;
+  }
+  
+  mat-card {
+    width: calc(100% - 70px);
+    height: calc(100% - 70px);
+    /*background:#00FFFF*/
+  }
+
+  mat-grid-tile-footer a {
+      color: black;
+  }
+
+  .icon-right{
+    position: absolute; right: 0;
+  }
+
+  /*mat-grid-tile{
+      background: #fff;
+  }
+  */
+.word-wrap {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}  
+
+ul {
+    padding: 5px;
+}
+
+button{
+
+  margin-top: 10px;
+  margin-bottom: 10px;
+
+}
+
+
+
+/*.card {
+    max-width: 100%;
+    overflow: hidden;
+    background-color: #ddd;
+}
+.card-text {
+    word-wrap: break-word;
+}
+
+  .row.vdivide [class*='col']:not(:last-child):after {
+    background: black;
+    width: 2px;
+    content: "";
+    display:block;
+    position: absolute;
+    top:0;
+    bottom: 0;
+    right: 0;
+    min-height: 70px;
+  }
+  */

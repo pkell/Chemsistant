@@ -1,0 +1,22 @@
+/* You can add global styles to this file, and also import other style files */
+@import "./Vendor/bootstrap/css/bootstrap.min.css";
+@import "./Vendor/bootstrap/css/bootstrap-grid.min.css";
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+
+/*body {background: #ddd}*/
+
+.interesting {
+    background: green;
+}
+
+.new {
+    background: blue;
+}
+
+.title-bar{
+    background: rgb(117, 178, 231);
+}
+
+
+

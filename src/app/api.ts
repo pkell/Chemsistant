@@ -1,0 +1,73 @@
+import { InMemoryDbService } from 'angular-in-memory-web-api';
+
+import { ITask } from './compounds/task-detail/task.model';
+import { ICompound, Compound } from './compounds/compound.model';
+
+export class APIData implements InMemoryDbService {
+
+    createDb() {
+        const compounds: ICompound[] = [
+            {
+                'id': 1,
+                'name': 'Compound 1',
+                'code': 'AMK-100',
+                'selectivityConditions': 'Selective 1',
+                'temperature': 20.22,
+                'placeholder': 'A thing',
+                'pinned': true,
+                'notes': '<ul><li>aaaaa</li><li>bb</li><li>cc</li></ul>'
+            },
+            {
+                'id': 2,
+                'name': 'Compound 2',
+                'code': 'AMK-200',
+                'selectivityConditions': 'Selective 2',
+                'temperature': 20.26,
+                'placeholder': 'A thing 2',
+                'pinned': false,
+                'notes': '<ul><li>aa</li><li>bb</li><li>cc</li></ul>'
+            },
+            {
+                'id': 3,
+                'name': 'Compound 3',
+                'code': 'AMK-300',
+                'selectivityConditions': 'Selective 3',
+                'temperature': 30.13,
+                'placeholder': 'A thing 3',
+                'pinned': true,
+                'notes': '<ul><li>aa</li><li>bb</li><li>cc</li></ul>'
+            },
+            {
+                'id': 4,
+                'name': 'Compound 4',
+                'code': 'AMK-400',
+                'selectivityConditions': 'Selective 4',
+                'temperature': 30.13,
+                'placeholder': 'A thing 4',
+                'pinned': false,
+                'notes': '<ul><li>aa</li><li>bb</li><li>cc</li></ul>'
+            },
+            {
+                'id': 5,
+                'name': 'Compound 5',
+                'code': 'AMK-500',
+                'selectivityConditions': 'Selective 5',
+                'temperature': 30.13,
+                'placeholder': 'A thing 5',
+                'pinned': true,
+                'notes': '<ul><li>aa</li><li>bb</li><li>cc</li></ul>'
+            },
+            {
+                'id': 6,
+                'name': 'Compound 6',
+                'code': 'AMK-600',
+                'selectivityConditions': 'Selective 6',
+                'temperature': 30.13,
+                'placeholder': 'A thing 6',
+                'pinned': false,
+                'notes': '<ul><li>aa</li><li>bb</li><li>cc</li></ul>'
+            }
+        ];
+        return { compounds: compounds };
+    }
+}

@@ -1,0 +1,32 @@
+<button mat-raised-button color="primary" (click) = "openAddComponentDialog()">Add component</button>
+<mat-grid-list color="primary" cols="4" gutterSize="8">
+  <div *ngFor="let compound of compounds">
+    <mat-grid-tile>
+        <mat-grid-tile-header [style.background]="'lightBlue'" [style.color]="'black'" class="title-bar">{{ compound.code }}
+            <button mat-button (click)="changePinnedStatus(compound)" class="icon-right">
+                <mat-icon aria-hidden="false" color="accent" aria-label="Pinned">
+                  {{ getIcon(compound.Pinned) }}
+                </mat-icon>
+                </button>
+        </mat-grid-tile-header>
+        <mat-card>
+          <p class="word-wrap">{{ compound.name }}</p>
+            <ul>
+        <li>Temp: {{ compound.temperature }}</li>
+      <li>Selectivity: {{ compound.selectivityConditions }}</li>
+    <li>Placeholder: {{ compound.placeholder }}</li>
+    </ul>
+  </mat-card>
+   <mat-grid-tile-footer [style.background]="'lightBlue'">
+     <a mat-raised-button [style.color]="'black'" href="/compounds/compound/{{ compound.id }}">Open</a>
+     <button mat-button (click)="openEditComponentDialog(compound)" class="icon-right">
+        <mat-icon aria-hidden="false" color="accent" aria-label="Pinned">
+          edit
+        </mat-icon>
+        </button>
+  </mat-grid-tile-footer>
+  </mat-grid-tile>   
+  </div>
+</mat-grid-list>
+
+    
