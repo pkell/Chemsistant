@@ -6,7 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-compound-detail',
   templateUrl: './compound-detail.component.html',
-  styleUrls: ['./compound-detail.component.css']
+  styleUrls: ['./compound-detail.component.scss']
 })
 export class CompoundDetailComponent implements OnInit {
   private theHtmlString: string;

@@ -5,7 +5,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 @Component({
   selector: 'app-add-compound-dialog',
   templateUrl: './add-compound-dialog.component.html',
-  styleUrls: ['./add-compound-dialog.component.css']
+  styleUrls: ['./add-compound-dialog.component.scss']
 })
 export class AddCompoundDialogComponent implements OnInit {
   form: FormGroup;
@@ -20,7 +20,7 @@ export class AddCompoundDialogComponent implements OnInit {
       name: '',
       selectivityConditions: '',
       temperature: '',
-      placeholder: '',
+      formula: '',
     });
   }
 

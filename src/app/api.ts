@@ -13,7 +13,7 @@ export class APIData implements InMemoryDbService {
                 'code': 'AMK-100',
                 'selectivityConditions': 'Selective 1',
                 'temperature': 20.22,
-                'placeholder': 'A thing',
+                'formula': 'C3H2O5',
                 'pinned': true,
                 'notes': '<ul><li>aaaaa</li><li>bb</li><li>cc</li></ul>'
             },
@@ -23,7 +23,7 @@ export class APIData implements InMemoryDbService {
                 'code': 'AMK-200',
                 'selectivityConditions': 'Selective 2',
                 'temperature': 20.26,
-                'placeholder': 'A thing 2',
+                'formula': 'C3H2O5',
                 'pinned': false,
                 'notes': '<ul><li>aa</li><li>bb</li><li>cc</li></ul>'
             },
@@ -33,7 +33,7 @@ export class APIData implements InMemoryDbService {
                 'code': 'AMK-300',
                 'selectivityConditions': 'Selective 3',
                 'temperature': 30.13,
-                'placeholder': 'A thing 3',
+                'formula': 'C3H2O5',
                 'pinned': true,
                 'notes': '<ul><li>aa</li><li>bb</li><li>cc</li></ul>'
             },
@@ -43,7 +43,7 @@ export class APIData implements InMemoryDbService {
                 'code': 'AMK-400',
                 'selectivityConditions': 'Selective 4',
                 'temperature': 30.13,
-                'placeholder': 'A thing 4',
+                'formula': 'C3H2O5',
                 'pinned': false,
                 'notes': '<ul><li>aa</li><li>bb</li><li>cc</li></ul>'
             },
@@ -53,7 +53,7 @@ export class APIData implements InMemoryDbService {
                 'code': 'AMK-500',
                 'selectivityConditions': 'Selective 5',
                 'temperature': 30.13,
-                'placeholder': 'A thing 5',
+                'formula': 'C3H2O5',
                 'pinned': true,
                 'notes': '<ul><li>aa</li><li>bb</li><li>cc</li></ul>'
             },
@@ -63,7 +63,7 @@ export class APIData implements InMemoryDbService {
                 'code': 'AMK-600',
                 'selectivityConditions': 'Selective 6',
                 'temperature': 30.13,
-                'placeholder': 'A thing 6',
+                'formula': 'C3H2O5',
                 'pinned': false,
                 'notes': '<ul><li>aa</li><li>bb</li><li>cc</li></ul>'
             }

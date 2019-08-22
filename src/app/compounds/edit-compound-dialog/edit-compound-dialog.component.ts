@@ -5,7 +5,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 @Component({
   selector: 'app-edit-compound-dialog',
   templateUrl: './edit-compound-dialog.component.html',
-  styleUrls: ['./edit-compound-dialog.component.css']
+  styleUrls: ['./edit-compound-dialog.component.scss']
 })
 export class EditCompoundDialogComponent implements OnInit {
   form: FormGroup;
@@ -21,7 +21,7 @@ export class EditCompoundDialogComponent implements OnInit {
       name: this.data.name,
       selectivityConditions: this.data.selectivityConditions,
       temperature: this.data.temperature,
-      placeholder: this.data.placeholder,
+      formula: this.data.formula,
     });
   }
 

@@ -6,7 +6,7 @@ export interface ICompound {
     code: string;
     selectivityConditions: string;
     temperature: number;
-    placeholder: string;
+    formula: string;
     pinned: boolean;
     notes: string;
 }
@@ -17,7 +17,7 @@ export class Compound {
     code: string;
     selectivityConditions: string;
     temperature: number;
-    placeholder: string;
+    formula: string;
     pinned: boolean;
     notes: string;
 }

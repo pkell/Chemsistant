@@ -23,7 +23,6 @@ import { EditCompoundDialogComponent } from './edit-compound-dialog/edit-compoun
     MatToolbarModule,
     MatDialogModule,
     MatButtonModule,
-    MatFormFieldModule,
     FormsModule,
     ReactiveFormsModule,
     MatInputModule,
