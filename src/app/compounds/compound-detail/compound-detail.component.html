@@ -1,15 +1,12 @@
+<button mat-raised-button color="primary" (click)="openEditNotesDialog()" class="right">Edit notes</button>
 <h3>AMK-500</h3>
 <h6>{{ currentCompound.name }}</h6>
-
-
  <ul>
-      <li>Temp: {{ currentCompound.temperature }}</li>
+    <li>Temp: {{ currentCompound.temperature }}</li>
     <li>availability: yes</li>
-  <li>selectivityConditions: {{ currentCompound.selectivityConditions }}</li>
-  <li>cool: Yes</li>
+    <li>selectivityConditions: {{ currentCompound.selectivityConditions }}</li>
+    <li>cool: Yes</li>
   </ul>
-
   <h4><u>Notes</u></h4>
-  <div class="container">
-      <div [innerHTML]="currentCompound.notes"></div>
-  </div>
+  <div [innerHTML]="currentCompound.notes"></div>
+

@@ -1,0 +1,8 @@
+<h1 mat-dialog-title>Edit notes</h1>
+<div mat-dialog-content>
+  <ckeditor [(ngModel)]="this.notesEdit" [editor]="Editor" data="{{ this.notesEdit }}"></ckeditor>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button (click) = "save()">Close</button>
+  <button mat-raised-button class="right" color="primary" (click) = "save()">Save</button>
+</div>
