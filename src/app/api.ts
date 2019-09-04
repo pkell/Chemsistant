@@ -9,7 +9,7 @@ export class APIData implements InMemoryDbService {
         const compounds: ICompound[] = [
             {
                 'id': 1,
-                'name': 'Compound 1',
+                'name': 'Compound-gregergrgegergergrgergerguiiuuiguiguiuioh',
                 'code': 'AMK-100',
                 'selectivityConditions': 'Selective 1',
                 'temperature': 20.22,

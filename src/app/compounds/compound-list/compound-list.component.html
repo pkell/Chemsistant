@@ -1,32 +1,49 @@
 <button mat-raised-button color="primary" (click) = "openAddComponentDialog()">Add Compound</button>
-<mat-grid-list color="primary" [cols]="breakpoint"  (window:resize)="onResize($event)" gutterSize="8">
+<form class="right">
+  <mat-form-field>
+    <input matInput placeholder="Search" >
+  </mat-form-field>
+</form>
+<div class="flex-container" fxLayout.xs="column" >
   <div *ngFor="let compound of compounds">
-    <mat-grid-tile>
-        <mat-grid-tile-header [style.background]="'lightBlue'" [style.color]="'black'" class="title-bar">{{ compound.code }}
-            <button mat-button (click)="changePinnedStatus(compound)" class="icon-right other-theme">
+    <div class="flex-item">
+        <mat-card fxFill class="example-card card-fix">
+           <div class="card-fix-container">
+             <div class="word-wrap">
+             <mat-card-header>
+          <mat-card-title>
+            {{ compound.name }}
+            </mat-card-title>
+               
+            <mat-card-subtitle>
+              {{ compound.formula }}
+            </mat-card-subtitle>
+             </mat-card-header>
+             </div>
+            <mat-card-content>
+              
+            </mat-card-content>
+          <mat-card-actions>
+            <a mat-button href="/compounds/compound/{{ compound.id }}">
+             <mat-icon aria-hidden="false">
+          open_in_browser
+        </mat-icon>
+        </a>
+        <button mat-button (click)="changePinnedStatus(compound)" class="other-theme center">
                 <mat-icon aria-hidden="false" color="accent" aria-label="Pinned">
                   {{ getIcon(compound.Pinned) }}
                 </mat-icon>
                 </button>
-        </mat-grid-tile-header>
-        <mat-card>
-          <h4 fxLayoutAlign="center" class="word-wrap">{{ compound.name }}<br /></h4>
-          <ul>
-            <li class="word-wrap">
-              <p>{{ compound.formula }}</p>
-            </li>
-          </ul>
-  </mat-card>
-   <mat-grid-tile-footer [style.background]="'lightBlue'">
-     <a mat-raised-button [style.color]="'black'" href="/compounds/compound/{{ compound.id }}">Open</a>
-     <button mat-button (click)="openEditComponentDialog(compound)" class="icon-right">
-        <mat-icon aria-hidden="false" aria-label="Pinned">
+            <button mat-button (click)="openEditComponentDialog(compound)" class="icon-right">
+        <mat-icon aria-hidden="false">
           edit
         </mat-icon>
         </button>
-  </mat-grid-tile-footer>
-  </mat-grid-tile>   
-  </div>
-</mat-grid-list>
+          </mat-card-actions>
+           </div>
+  </mat-card>
+    </div>
+</div>
+</div>
 
     

@@ -2,32 +2,33 @@ p {
     font-family: Lato;
   }
   
-  mat-card {
-    width: calc(100% - 80px);
-    height: calc(100% - 115px);
-    /*background:#00FFFF*/
-  }
-
-  mat-grid-tile-footer a {
-      color: black;
-  }
-
   .icon-right{
     position: absolute; right: 0;
   }
 
-  /*mat-grid-tile{
-      background: #fff;
-  }
-  */
-.word-wrap {
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-}  
-
-ul {
-    padding: 5px;
+  .example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
 }
+
+.example-full-width {
+  width: 100%;
+}
+
+  .center {
+    margin:auto;
+    width: 50%;
+  }
+
+  .right {
+    float: right;
+  }
+
+.word-wrap {
+  word-break: break-all;
+  
+}  
 
 button{
 
@@ -36,26 +37,38 @@ button{
 
 }
 
+.flex-container {
+  display: flex;
+  justify-content: left;
+  flex-direction: row;
+  flex-flow: row wrap;
 
-
-/*.card {
-    max-width: 100%;
-    overflow: hidden;
-    background-color: #ddd;
-}
-.card-text {
-    word-wrap: break-word;
 }
 
-  .row.vdivide [class*='col']:not(:last-child):after {
-    background: black;
-    width: 2px;
-    content: "";
-    display:block;
-    position: absolute;
-    top:0;
-    bottom: 0;
-    right: 0;
-    min-height: 70px;
+.flex-item {
+    width: 320px;
+    height: 250px;
+    margin-top: 15px;
+    margin-right: 8px;
+    }
+
+.card-fix {
+  padding: 0;
+
+  .card-fix-container {
+    box-sizing: border-box;
+    height: 100%;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+
+    .mat-card-content { 
+      flex: 1;
+    }
+
+    & > .mat-card-actions:last-child {
+      margin-bottom: -16px;
+      padding-bottom: 0;
+    }
   }
-  */
+}
