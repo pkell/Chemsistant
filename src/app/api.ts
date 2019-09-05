@@ -72,49 +72,49 @@ export class APIData implements InMemoryDbService {
             {
                 'id': 1,
                 'compoundId': 1,
-                'title': 'PXRD 1',
+                'name': 'PXRD 1',
                 'imageUrls': ['Selective 1', '2'],
                 'data': '<ul><li>aa</li><li>bb</li><li>cc</li></ul>'
             },
                         {
                 'id': 2,
                 'compoundId': 1,
-                'title': 'PXRD 2',
+                'name': 'PXRD 2',
                 'imageUrls': ['Selective 1', '2'],
                 'data': '<ul><li>aa</li><li>bb</li><li>cc</li></ul>'
             },
             {
                 'id': 3,
                 'compoundId': 1,
-                'title': 'PXRD 3',
+                'name': 'PXRD 3',
                 'imageUrls': ['Selective 1', '2'],
                 'data': '<ul><li>aa</li><li>bb</li><li>cc</li></ul>'
             },
             {
                 'id': 4,
                 'compoundId': 1,
-                'title': 'PXRD 4',
+                'name': 'PXRD 4',
                 'imageUrls': ['Selective 1', '2'],
                 'data': '<ul><li>aa</li><li>bb</li><li>cc</li></ul>'
             },
             {
                 'id': 5,
                 'compoundId': 1,
-                'title': 'PXRD 5',
+                'name': 'PXRD 5',
                 'imageUrls': ['Selective 1', '2'],
                 'data': '<ul><li>aa</li><li>bb</li><li>cc</li></ul>'
             },
             {
                 'id': 6,
                 'compoundId': 1,
-                'title': 'PXRD 6',
+                'name': 'PXRD 6',
                 'imageUrls': ['Selective 1', '2'],
                 'data': '<ul><li>aa</li><li>bb</li><li>cc</li></ul>'
             },
             {
                 'id': 7,
                 'compoundId': 1,
-                'title': 'PXRD 7',
+                'name': 'PXRD 7',
                 'imageUrls': ['Selective 1', '2'],
                 'data': '<ul><li>aa</li><li>bb</li><li>cc</li></ul>'
             }

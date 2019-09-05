@@ -24,8 +24,8 @@ export class AddCompoundDialogComponent implements OnInit {
     });
   }
 
-  submit(form) {
-    this.dialogRef.close(`${form.value.code}`);
+  submit() {
+    this.dialogRef.close(`${this.form.value.code}`);
   }
 
 }

@@ -3,6 +3,7 @@ import { ICompound, Compound } from '../compound.model';
 import { CompoundService } from '../services/compound.service';
 import { ActivatedRoute } from '@angular/router';
 import { EditNotesDialogComponent } from '../edit-notes-dialog/edit-notes-dialog.component';
+import { AddTaskDialogComponent } from '../add-task-dialog/add-task-dialog.component';
 import { MatDialogRef, MatDialog } from '@angular/material';
 import { ITask } from '../task-detail/task.model';
 
@@ -15,7 +16,8 @@ export class CompoundDetailComponent implements OnInit {
   private tasks: ITask[];
   private currentCompound: ICompound = new Compound();
   private id: number;
-  editNotesialogRef: MatDialogRef<EditNotesDialogComponent>;
+  editNotesDialogRef: MatDialogRef<EditNotesDialogComponent>;
+  addTaskDialogRef: MatDialogRef<AddTaskDialogComponent>;
 
   constructor(private compoundService: CompoundService, private route: ActivatedRoute, private dialog: MatDialog) {
   }
@@ -36,13 +38,25 @@ export class CompoundDetailComponent implements OnInit {
   }
 
   openEditNotesDialog() {
-    this.editNotesialogRef = this.dialog.open(EditNotesDialogComponent, {
+    this.editNotesDialogRef = this.dialog.open(EditNotesDialogComponent, {
       width: '600px',
       data: this.currentCompound
     });
-    this.editNotesialogRef.afterClosed().subscribe(result => {
+    this.editNotesDialogRef.afterClosed().subscribe(result => {
       if(this.currentCompound.notes !== result){
         this.currentCompound.notes = result;
+      }
+    });
+  }
+
+  openAddTaskDialog() {
+    this.addTaskDialogRef = this.dialog.open(AddTaskDialogComponent, {
+      width: '400px',
+      height: '200px'
+    });
+    this.addTaskDialogRef.afterClosed().subscribe(result => {
+      if(result){
+        // save
       }
     });
   }
