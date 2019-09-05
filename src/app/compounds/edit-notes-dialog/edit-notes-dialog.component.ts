@@ -19,11 +19,11 @@ export class EditNotesDialogComponent implements OnInit {
     this.notesEdit = this.data.notes;
   }
 
-  save(){
+  /*save(){
       this.dialogRef.close(this.notesEdit);
-  }
+  }*/
 
   close(){
-    this.dialogRef.close();
+    this.dialogRef.close(this.data.notes);
   }
 }

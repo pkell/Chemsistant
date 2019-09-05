@@ -3,21 +3,29 @@ import { ICompound } from '../compound.model';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable , throwError } from 'rxjs';
 import { tap , catchError } from 'rxjs/operators';
+import { ITask } from '../task-detail/task.model';
 
 @Injectable()
 export class CompoundService {
-  private _orderUrl = 'api/compounds';
+  private _compoundUrl = 'api/compounds';
+  private _taskUrl = 'api/tasks';
 
   constructor(private _http: HttpClient) { }
 
   getCompounds(): Observable<ICompound[]> {
-    return this._http.get<ICompound[]>(this._orderUrl).pipe(
+    return this._http.get<ICompound[]>(this._compoundUrl).pipe(
             tap(data => console.log('All: ' + JSON.stringify(data))),
 catchError(this.handleError));
   }
 
   getCompound(id: number): Observable<ICompound> {
-    return this._http.get<ICompound>(this._orderUrl + '/' + id).pipe(
+    return this._http.get<ICompound>(this._compoundUrl + '/' + id).pipe(
+            tap(data => console.log('All: ' + JSON.stringify(data))),
+catchError(this.handleError));
+  }
+
+  getTasks():  Observable<ITask[]> {
+    return this._http.get<ITask[]>(this._taskUrl).pipe(
             tap(data => console.log('All: ' + JSON.stringify(data))),
 catchError(this.handleError));
   }

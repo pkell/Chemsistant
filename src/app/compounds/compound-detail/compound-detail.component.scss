@@ -4,13 +4,7 @@
   }  
 
   .right{
-    position: absolute; right: 0;
-  }
-
-  .flex-container {
-    display: flex;
-    justify-content: left;
-  
+    float: right;
   }
 
   button{
@@ -20,3 +14,42 @@
     margin-right: 10px;
   
   }
+  .flex-container {
+  display: flex;
+  justify-content: left;
+  flex-direction: row;
+  flex-flow: row wrap;
+
+}
+
+h4 {
+  margin-bottom: 20px;
+}
+
+.flex-item {
+    width: 200px;
+    height: 150px;
+    margin-top: 15px;
+    margin-right: 8px;
+    }
+
+.card-fix {
+  padding: 0;
+
+  .card-fix-container {
+    box-sizing: border-box;
+    height: 100%;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+
+    .mat-card-content { 
+      flex: 1;
+    }
+
+    & > .mat-card-actions:last-child {
+      margin-bottom: -16px;
+      padding-bottom: 0;
+    }
+  }
+}

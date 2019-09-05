@@ -12,7 +12,7 @@ import { environment } from '../environments/environment';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatCardModule, MatGridListModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatToolbarModule } from '@angular/material';
+import { MatToolbarModule,  MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { CompoundService } from './compounds/services/compound.service';
 
@@ -36,7 +36,7 @@ import { CompoundService } from './compounds/services/compound.service';
     MatToolbarModule,
     FlexLayoutModule
   ],
-  providers: [CompoundService],
+  providers: [CompoundService, {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

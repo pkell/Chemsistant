@@ -15,7 +15,7 @@ export class APIData implements InMemoryDbService {
                 'temperature': 20.22,
                 'formula': 'C3H2O5',
                 'pinned': true,
-                'notes': '<ul><li>aaaaa</li><li>bb</li><li>cc</li></ul>'
+                'notes': '<ul><li>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</li><li>bb</li><li>cc</li></ul>'
             },
             {
                 'id': 2,
@@ -67,7 +67,58 @@ export class APIData implements InMemoryDbService {
                 'pinned': false,
                 'notes': '<ul><li>aa</li><li>bb</li><li>cc</li></ul>'
             }
+        ]
+        const tasks: ITask[] = [
+            {
+                'id': 1,
+                'compoundId': 1,
+                'title': 'PXRD 1',
+                'imageUrls': ['Selective 1', '2'],
+                'data': '<ul><li>aa</li><li>bb</li><li>cc</li></ul>'
+            },
+                        {
+                'id': 2,
+                'compoundId': 1,
+                'title': 'PXRD 2',
+                'imageUrls': ['Selective 1', '2'],
+                'data': '<ul><li>aa</li><li>bb</li><li>cc</li></ul>'
+            },
+            {
+                'id': 3,
+                'compoundId': 1,
+                'title': 'PXRD 3',
+                'imageUrls': ['Selective 1', '2'],
+                'data': '<ul><li>aa</li><li>bb</li><li>cc</li></ul>'
+            },
+            {
+                'id': 4,
+                'compoundId': 1,
+                'title': 'PXRD 4',
+                'imageUrls': ['Selective 1', '2'],
+                'data': '<ul><li>aa</li><li>bb</li><li>cc</li></ul>'
+            },
+            {
+                'id': 5,
+                'compoundId': 1,
+                'title': 'PXRD 5',
+                'imageUrls': ['Selective 1', '2'],
+                'data': '<ul><li>aa</li><li>bb</li><li>cc</li></ul>'
+            },
+            {
+                'id': 6,
+                'compoundId': 1,
+                'title': 'PXRD 6',
+                'imageUrls': ['Selective 1', '2'],
+                'data': '<ul><li>aa</li><li>bb</li><li>cc</li></ul>'
+            },
+            {
+                'id': 7,
+                'compoundId': 1,
+                'title': 'PXRD 7',
+                'imageUrls': ['Selective 1', '2'],
+                'data': '<ul><li>aa</li><li>bb</li><li>cc</li></ul>'
+            }
         ];
-        return { compounds: compounds };
+        return { compounds: compounds, tasks: tasks };
     }
 }

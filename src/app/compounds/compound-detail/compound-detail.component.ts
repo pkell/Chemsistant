@@ -4,6 +4,7 @@ import { CompoundService } from '../services/compound.service';
 import { ActivatedRoute } from '@angular/router';
 import { EditNotesDialogComponent } from '../edit-notes-dialog/edit-notes-dialog.component';
 import { MatDialogRef, MatDialog } from '@angular/material';
+import { ITask } from '../task-detail/task.model';
 
 @Component({
   selector: 'app-compound-detail',
@@ -11,13 +12,12 @@ import { MatDialogRef, MatDialog } from '@angular/material';
   styleUrls: ['./compound-detail.component.scss']
 })
 export class CompoundDetailComponent implements OnInit {
-  private theHtmlString: string;
+  private tasks: ITask[];
   private currentCompound: ICompound = new Compound();
   private id: number;
   editNotesialogRef: MatDialogRef<EditNotesDialogComponent>;
 
   constructor(private compoundService: CompoundService, private route: ActivatedRoute, private dialog: MatDialog) {
-    this.theHtmlString = '<ul><li>aaa</li><li>bbb</li></ul>';
   }
 
   ngOnInit() {
@@ -26,6 +26,7 @@ export class CompoundDetailComponent implements OnInit {
       this.id = +params.get('id');
       this.getCompound();
     });
+    this.getAllTasks();
   }
 
   getCompound() {
@@ -40,7 +41,15 @@ export class CompoundDetailComponent implements OnInit {
       data: this.currentCompound
     });
     this.editNotesialogRef.afterClosed().subscribe(result => {
-     this.currentCompound.notes = result;
+      if(this.currentCompound.notes !== result){
+        this.currentCompound.notes = result;
+      }
+    });
+  }
+
+    getAllTasks() {
+    this.compoundService.getTasks().subscribe(data => {
+      this.tasks = data;
     });
   }
 

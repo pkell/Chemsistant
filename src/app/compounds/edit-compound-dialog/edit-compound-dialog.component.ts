@@ -25,8 +25,13 @@ export class EditCompoundDialogComponent implements OnInit {
     });
   }
 
-  submit(form) {
-    this.dialogRef.close(`${form.value.code}`);
+  submit() {
+    this.dialogRef.close(`${this.form.value.code}`);
+    console.log(this.form.value.name);
+  }
+
+  close(){
+     this.dialogRef.close();
   }
 
 }

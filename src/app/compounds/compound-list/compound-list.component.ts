@@ -14,13 +14,11 @@ import { EditCompoundDialogComponent } from '../edit-compound-dialog/edit-compou
 export class CompoundListComponent implements OnInit {
   private compounds: ICompound[];
   private display: string;
-  breakpoint: number;
   addCompoundialogRef: MatDialogRef<AddCompoundDialogComponent>;
   editCompoundialogRef: MatDialogRef<EditCompoundDialogComponent>;
   constructor(private compoundService: CompoundService, private route: ActivatedRoute, private dialog: MatDialog) { }
 
   ngOnInit() {
-    this.breakpoint = (window.innerWidth <= 500) ? 1 : 4;
     this.getAllCompounds();
     this.route.paramMap.subscribe(params => {
       console.log(params.get('display'));
@@ -56,10 +54,6 @@ export class CompoundListComponent implements OnInit {
 
   changePinnedStatus(compound) {
     compound.Pinned = ! compound.Pinned;
-  }
-
-  onResize(event) {
-    this.breakpoint = (event.target.innerWidth <= 500) ? 1 : 4;
   }
 
 }
