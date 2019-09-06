@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { AddCompoundDialogComponent } from '../add-compound-dialog/add-compound-dialog.component';
 import { MatDialog, MatDialogRef } from '@angular/material';
 import { EditCompoundDialogComponent } from '../edit-compound-dialog/edit-compound-dialog.component';
+import { FirebaseService } from '../services/firebase.service';
 
 @Component({
   selector: 'app-compound-list',
@@ -13,10 +14,11 @@ import { EditCompoundDialogComponent } from '../edit-compound-dialog/edit-compou
 })
 export class CompoundListComponent implements OnInit {
   private compounds: ICompound[];
+  items: Array<any>;
   private display: string;
   addCompoundialogRef: MatDialogRef<AddCompoundDialogComponent>;
   editCompoundialogRef: MatDialogRef<EditCompoundDialogComponent>;
-  constructor(private compoundService: CompoundService, private route: ActivatedRoute, private dialog: MatDialog) { }
+  constructor(private compoundService: CompoundService, private route: ActivatedRoute, private dialog: MatDialog, public firebaseService: FirebaseService) { }
 
   ngOnInit() {
     this.getAllCompounds();
@@ -27,8 +29,8 @@ export class CompoundListComponent implements OnInit {
   }
 
   getAllCompounds() {
-    this.compoundService.getCompounds().subscribe(data => {
-      this.compounds = data;
+    this.firebaseService.getCompounds().subscribe(data => {
+      this.items = data;
     });
   }
 
@@ -45,7 +47,6 @@ export class CompoundListComponent implements OnInit {
         comp.pinned = false;
         comp.selectivityConditions = result.selectivityConditions;
         comp.temperature = result.temperature;
-        this.compounds.push(comp);
         const postData = {
           description: comp
           };
@@ -70,8 +71,11 @@ export class CompoundListComponent implements OnInit {
     return 'bookmark_border';
   }
 
-  changePinnedStatus(compound) {
-    compound.Pinned = ! compound.Pinned;
+  changePinnedStatus(item) {
+    //item.payload.doc.data().pinned = !item.payload.doc.data().pinned;
+    this.firebaseService.updatePinnedStatus(item)
+    console.log(item.payload.doc.data().pinned);
   }
+
 
 }

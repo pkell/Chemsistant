@@ -15,6 +15,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule,  MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { CompoundService } from './compounds/services/compound.service';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+
 
 
 @NgModule({
@@ -27,8 +30,10 @@ import { CompoundService } from './compounds/services/compound.service';
     CoreModule,
     AppRoutingModule,
     HttpClientModule,
-    environment.production ?
-    [] : HttpClientInMemoryWebApiModule.forRoot(APIData),
+    /*environment.production ?
+    [] : HttpClientInMemoryWebApiModule.forRoot(APIData),*/
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
     LayoutModule,
     MatGridListModule,
     MatCardModule,

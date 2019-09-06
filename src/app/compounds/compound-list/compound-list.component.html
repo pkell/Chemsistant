@@ -5,18 +5,18 @@
   </mat-form-field>
 </form>
 <div class="flex-container" fxLayout.xs="column" >
-  <div *ngFor="let compound of compounds">
+  <div *ngFor="let compound of items">
     <div class="flex-item">
         <mat-card fxFill class="example-card card-fix">
            <div class="card-fix-container">
              <div class="word-wrap">
              <mat-card-header>
           <mat-card-title>
-            {{ compound.name }}
+            {{ compound.payload.doc.data().name }}
             </mat-card-title>
                
             <mat-card-subtitle>
-              {{ compound.formula }}
+              {{ compound.payload.doc.data().formula }}
             </mat-card-subtitle>
              </mat-card-header>
              </div>
@@ -24,14 +24,14 @@
               
             </mat-card-content>
           <mat-card-actions>
-            <a mat-button href="/compounds/compound/{{ compound.id }}">
+            <a mat-button href="/compounds/compound/{{ compound.payload.doc.data().id }}">
              <mat-icon aria-hidden="false">
           open_in_browser
         </mat-icon>
         </a>
         <button mat-button (click)="changePinnedStatus(compound)" class="other-theme center">
                 <mat-icon aria-hidden="false" color="accent" aria-label="Pinned">
-                  {{ getIcon(compound.Pinned) }}
+                  {{ getIcon(compound.payload.doc.data().pinned) }}
                 </mat-icon>
                 </button>
             <button mat-button (click)="openEditComponentDialog(compound)" class="icon-right">
