@@ -17,6 +17,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { CompoundService } from './compounds/services/compound.service';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { FirebaseService } from './compounds/services/firebase.service';
 
 
 
@@ -41,7 +42,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
     MatToolbarModule,
     FlexLayoutModule
   ],
-  providers: [CompoundService, {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}],
+  providers: [CompoundService, FirebaseService, {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

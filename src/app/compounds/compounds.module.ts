@@ -16,6 +16,7 @@ import { EditCompoundDialogComponent } from './edit-compound-dialog/edit-compoun
 import { EditNotesDialogComponent } from './edit-notes-dialog/edit-notes-dialog.component';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { AddTaskDialogComponent } from './add-task-dialog/add-task-dialog.component';
+import { FirebaseService } from './services/firebase.service';
 
 @NgModule({
   imports: [
@@ -37,6 +38,6 @@ import { AddTaskDialogComponent } from './add-task-dialog/add-task-dialog.compon
   entryComponents: [AddCompoundDialogComponent, EditCompoundDialogComponent, EditNotesDialogComponent, AddTaskDialogComponent],
   declarations: [CompoundListComponent, CompoundDetailComponent, TaskDetailComponent,
     AddCompoundDialogComponent, EditCompoundDialogComponent, EditNotesDialogComponent, AddTaskDialogComponent],
-  providers: [CompoundService]
+  providers: [CompoundService, FirebaseService]
 })
 export class CompoundsModule { }

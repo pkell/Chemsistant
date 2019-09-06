@@ -47,7 +47,7 @@ export class CompoundListComponent implements OnInit {
 
   openAddComponentDialog() {
     this.addCompoundialogRef = this.dialog.open(AddCompoundDialogComponent, {
-      width: '500px'
+      width: '500px',
     });
   }
 
