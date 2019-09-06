@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CompoundService } from '../services/compound.service';
-import { ICompound } from '../compound.model';
+import { ICompound, Compound } from '../compound.model';
 import { ActivatedRoute } from '@angular/router';
 import { AddCompoundDialogComponent } from '../add-compound-dialog/add-compound-dialog.component';
 import { MatDialog, MatDialogRef } from '@angular/material';
@@ -35,6 +35,24 @@ export class CompoundListComponent implements OnInit {
   openAddComponentDialog() {
     this.addCompoundialogRef = this.dialog.open(AddCompoundDialogComponent, {
       width: '500px'
+    });
+    this.addCompoundialogRef.afterClosed().subscribe(result => {
+      if(result){
+        let comp = new Compound();
+        comp.code = result.code;
+        comp.formula = result.formula;
+        comp.name = result.name;
+        comp.pinned = false;
+        comp.selectivityConditions = result.selectivityConditions;
+        comp.temperature = result.temperature;
+        this.compounds.push(comp);
+        const postData = {
+          description: comp
+          };
+        this.compoundService.createCompound(postData).subscribe(data => {
+          console.log(data);
+        });
+      }
     });
   }
 
