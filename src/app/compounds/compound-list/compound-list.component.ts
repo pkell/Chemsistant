@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { CompoundService } from '../services/compound.service';
 import { ICompound, Compound } from '../compound.model';
 import { ActivatedRoute } from '@angular/router';
 import { AddCompoundDialogComponent } from '../add-compound-dialog/add-compound-dialog.component';
@@ -19,7 +18,6 @@ export class CompoundListComponent implements OnInit {
   addCompoundialogRef: MatDialogRef<AddCompoundDialogComponent>;
   editCompoundialogRef: MatDialogRef<EditCompoundDialogComponent>;
   constructor(
-    private compoundService: CompoundService, 
     private route: ActivatedRoute, 
     private dialog: MatDialog, 
     public firebaseService: FirebaseService

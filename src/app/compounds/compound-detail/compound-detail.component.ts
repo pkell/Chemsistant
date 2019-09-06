@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ICompound, Compound } from '../compound.model';
-import { CompoundService } from '../services/compound.service';
 import { ActivatedRoute } from '@angular/router';
 import { EditNotesDialogComponent } from '../edit-notes-dialog/edit-notes-dialog.component';
 import { AddTaskDialogComponent } from '../add-task-dialog/add-task-dialog.component';
@@ -22,7 +21,6 @@ export class CompoundDetailComponent implements OnInit {
   addTaskDialogRef: MatDialogRef<AddTaskDialogComponent>;
 
   constructor(
-    private compoundService: CompoundService, 
     private route: ActivatedRoute, 
     private dialog: MatDialog, 
     public firebaseService: FirebaseService) {
@@ -52,11 +50,6 @@ export class CompoundDetailComponent implements OnInit {
         notes: this.item.notes
       }
     });
-    this.editNotesDialogRef.afterClosed().subscribe(result => {
-      if(this.currentCompound.notes !== result){
-        this.currentCompound.notes = result;
-      }
-    });
   }
 
   openAddTaskDialog() {
@@ -65,11 +58,6 @@ export class CompoundDetailComponent implements OnInit {
       height: '200px',
       data: this.id
 
-    });
-    this.addTaskDialogRef.afterClosed().subscribe(result => {
-      if(result){
-        // save
-      }
     });
   }
 

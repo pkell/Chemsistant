@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { CompoundListComponent } from './compound-list/compound-list.component';
 import { CompoundDetailComponent } from './compound-detail/compound-detail.component';
 import { TaskDetailComponent } from './task-detail/task-detail.component';
-import { CompoundService } from './services/compound.service';
 import { CompoundsRoutingModule } from './compounds-routing.module';
 import { MatCardModule, MatGridListModule, MatToolbarModule, MatDialogModule, MatButtonModule } from '@angular/material';
 import { AddCompoundDialogComponent } from './add-compound-dialog/add-compound-dialog.component';
@@ -38,6 +37,6 @@ import { FirebaseService } from './services/firebase.service';
   entryComponents: [AddCompoundDialogComponent, EditCompoundDialogComponent, EditNotesDialogComponent, AddTaskDialogComponent],
   declarations: [CompoundListComponent, CompoundDetailComponent, TaskDetailComponent,
     AddCompoundDialogComponent, EditCompoundDialogComponent, EditNotesDialogComponent, AddTaskDialogComponent],
-  providers: [CompoundService, FirebaseService]
+  providers: [FirebaseService]
 })
 export class CompoundsModule { }
