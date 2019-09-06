@@ -39,26 +39,15 @@ export class CompoundListComponent implements OnInit {
     });
   }
 
+  getPinnedCompounds() {
+    this.firebaseService.getPinnedCompounds().subscribe(data => {
+      this.items = data;
+    });
+  }
+
   openAddComponentDialog() {
     this.addCompoundialogRef = this.dialog.open(AddCompoundDialogComponent, {
       width: '500px'
-    });
-    this.addCompoundialogRef.afterClosed().subscribe(result => {
-      if(result){
-        let comp = new Compound();
-        comp.code = result.code;
-        comp.formula = result.formula;
-        comp.name = result.name;
-        comp.pinned = false;
-        comp.selectivityConditions = result.selectivityConditions;
-        comp.temperature = result.temperature;
-        const postData = {
-          description: comp
-          };
-        this.compoundService.createCompound(postData).subscribe(data => {
-          console.log(data);
-        });
-      }
     });
   }
 

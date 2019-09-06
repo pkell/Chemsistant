@@ -11,6 +11,7 @@
   <h4><u>Notes</u> <button mat-raised-button color="primary" (click)="openEditNotesDialog()" class="right">Edit notes</button></h4>
   
   <div [innerHTML]="item.notes"></div>
+<br>
 
   <h4><u>Tasks</u> <button mat-raised-button color="primary" (click)="openAddTaskDialog()" class="right">Add task</button></h4>
 
@@ -22,7 +23,7 @@
              <div class="word-wrap">
              <mat-card-header>
           <mat-card-title>
-            {{ task.name }}
+            {{ task.payload.doc.data().name }}
             </mat-card-title>
              </mat-card-header>
              </div>
@@ -30,7 +31,7 @@
               
             </mat-card-content>
           <mat-card-actions>
-            <a class="right" mat-button href="/tasks/task/{{ task.id }}">
+            <a class="right" mat-button href="/tasks/task/{{ task.payload.doc.id }}">
              <mat-icon aria-hidden="false">
           open_in_browser
         </mat-icon>

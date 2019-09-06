@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef, MatDialog } from '@angular/material';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FirebaseService } from '../services/firebase.service';
 
 @Component({
   selector: 'app-add-compound-dialog',
@@ -11,7 +12,8 @@ export class AddCompoundDialogComponent implements OnInit {
   form: FormGroup;
   constructor(
     private formBuilder: FormBuilder,
-    private dialogRef: MatDialogRef<AddCompoundDialogComponent>
+    private dialogRef: MatDialogRef<AddCompoundDialogComponent>,
+    public firebaseService: FirebaseService
   ) { }
 
   ngOnInit() {
@@ -25,7 +27,8 @@ export class AddCompoundDialogComponent implements OnInit {
   }
 
   submit() {
-    this.dialogRef.close(this.form.value);
+    this.firebaseService.createCompound(this.form.value);
+    this.dialogRef.close();
   }
 
 }

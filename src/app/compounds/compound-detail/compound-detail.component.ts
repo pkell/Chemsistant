@@ -14,7 +14,7 @@ import { FirebaseService } from '../services/firebase.service';
   styleUrls: ['./compound-detail.component.scss']
 })
 export class CompoundDetailComponent implements OnInit {
-  private tasks: ITask[];
+  private tasks;
   private item;
   private currentCompound: ICompound = new Compound();
   private id: string;
@@ -71,7 +71,7 @@ export class CompoundDetailComponent implements OnInit {
   }
 
     getAllTasks() {
-    this.compoundService.getTasks().subscribe(data => {
+    this.firebaseService.getTasks(this.id).subscribe(data => {
       this.tasks = data;
     });
   }
