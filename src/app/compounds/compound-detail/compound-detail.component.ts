@@ -6,6 +6,7 @@ import { EditNotesDialogComponent } from '../edit-notes-dialog/edit-notes-dialog
 import { AddTaskDialogComponent } from '../add-task-dialog/add-task-dialog.component';
 import { MatDialogRef, MatDialog } from '@angular/material';
 import { ITask } from '../task-detail/task.model';
+import { FirebaseService } from '../services/firebase.service';
 
 @Component({
   selector: 'app-compound-detail',
@@ -14,26 +15,32 @@ import { ITask } from '../task-detail/task.model';
 })
 export class CompoundDetailComponent implements OnInit {
   private tasks: ITask[];
+  private item;
   private currentCompound: ICompound = new Compound();
-  private id: number;
+  private id: string;
   editNotesDialogRef: MatDialogRef<EditNotesDialogComponent>;
   addTaskDialogRef: MatDialogRef<AddTaskDialogComponent>;
 
-  constructor(private compoundService: CompoundService, private route: ActivatedRoute, private dialog: MatDialog) {
+  constructor(
+    private compoundService: CompoundService, 
+    private route: ActivatedRoute, 
+    private dialog: MatDialog, 
+    public firebaseService: FirebaseService) {
   }
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
-      console.log(params.get('id'));
-      this.id = +params.get('id');
+      //console.log(params.get('id'));
+      this.id = params.get('id');
       this.getCompound();
     });
     this.getAllTasks();
   }
 
   getCompound() {
-    this.compoundService.getCompound(this.id).subscribe(data => {
-      this.currentCompound = data;
+    this.firebaseService.getCompound(this.id).subscribe(data => {
+      console.log(data);
+      this.item = data.payload.data();
     });
   }
 
@@ -52,7 +59,9 @@ export class CompoundDetailComponent implements OnInit {
   openAddTaskDialog() {
     this.addTaskDialogRef = this.dialog.open(AddTaskDialogComponent, {
       width: '400px',
-      height: '200px'
+      height: '200px',
+      data: this.id
+
     });
     this.addTaskDialogRef.afterClosed().subscribe(result => {
       if(result){

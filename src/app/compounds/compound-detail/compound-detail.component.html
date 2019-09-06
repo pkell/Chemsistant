@@ -1,14 +1,16 @@
-<h3>{{currentCompound.code}}</h3>
-<h6>{{ currentCompound.name }}</h6>
+
+<div *ngIf="item">
+<h3>{{ item.code}}</h3>
+<h6>{{ item.name }}</h6>
  <ul>
-    <li>Temp: {{ currentCompound.temperature }}</li>
+    <li>Temp: {{ item.temperature }}</li>
     <li>availability: yes</li>
-    <li>selectivityConditions: {{ currentCompound.selectivityConditions }}</li>
+    <li>selectivityConditions: {{ item.selectivityConditions }}</li>
     <li>cool: Yes</li>
   </ul>
   <h4><u>Notes</u> <button mat-raised-button color="primary" (click)="openEditNotesDialog()" class="right">Edit notes</button></h4>
   
-  <div [innerHTML]="currentCompound.notes"></div>
+  <div [innerHTML]="item.notes"></div>
 
   <h4><u>Tasks</u> <button mat-raised-button color="primary" (click)="openAddTaskDialog()" class="right">Add task</button></h4>
 
@@ -37,6 +39,7 @@
            </div>
   </mat-card>
     </div>
+</div>
 </div>
 </div>
 

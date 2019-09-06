@@ -18,7 +18,12 @@ export class CompoundListComponent implements OnInit {
   private display: string;
   addCompoundialogRef: MatDialogRef<AddCompoundDialogComponent>;
   editCompoundialogRef: MatDialogRef<EditCompoundDialogComponent>;
-  constructor(private compoundService: CompoundService, private route: ActivatedRoute, private dialog: MatDialog, public firebaseService: FirebaseService) { }
+  constructor(
+    private compoundService: CompoundService, 
+    private route: ActivatedRoute, 
+    private dialog: MatDialog, 
+    public firebaseService: FirebaseService
+    ) { }
 
   ngOnInit() {
     this.getAllCompounds();
@@ -72,9 +77,7 @@ export class CompoundListComponent implements OnInit {
   }
 
   changePinnedStatus(item) {
-    //item.payload.doc.data().pinned = !item.payload.doc.data().pinned;
     this.firebaseService.updatePinnedStatus(item)
-    console.log(item.payload.doc.data().pinned);
   }
 
 

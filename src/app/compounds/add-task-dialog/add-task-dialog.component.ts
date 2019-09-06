@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { MatDialogRef, MatDialog } from '@angular/material';
+import { Component, OnInit, Inject } from '@angular/core';
+import { MatDialogRef, MatDialog, MAT_DIALOG_DATA } from '@angular/material';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
@@ -11,7 +11,8 @@ export class AddTaskDialogComponent implements OnInit {
   form: FormGroup;
   constructor(
     private formBuilder: FormBuilder,
-    private dialogRef: MatDialogRef<AddTaskDialogComponent>
+    private dialogRef: MatDialogRef<AddTaskDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) private data
   ) { }
 
   ngOnInit() {

@@ -12,7 +12,8 @@ export class FirebaseService {
       return this.db.collection('compounds').snapshotChanges()
   }
 
-  getCompound(id){
+  getCompound(id: string){
+    console.log(id);
     return this.db.collection('compounds').doc(id).snapshotChanges();
   }
 
@@ -38,11 +39,11 @@ export class FirebaseService {
   }
 
   updatePinnedStatus(data) {
-      let a = data.payload.doc.data().pinned;
-      a = ! a;
+      let val = data.payload.doc.data().pinned;
+      val = ! val;
     return this.db
         .collection("compounds")
         .doc(data.payload.doc.id)
-        .set({ pinned: a }, { merge: true });
+        .set({ pinned: val }, { merge: true });
  }
 }
