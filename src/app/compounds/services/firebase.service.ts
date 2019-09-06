@@ -26,11 +26,6 @@ export class FirebaseService {
     return this.db.collection('compounds').doc(id).set(value);
   }
 
-  getTasks(compoundId){
-    return this.db.collection('tasks', ref =>
-        ref.where('compoundId', '==', compoundId)).snapshotChanges();
-  }
-
   createCompound(value){
     return this.db.collection('compounds').add({
       name: value.name,
@@ -51,4 +46,17 @@ export class FirebaseService {
         .doc(data.payload.doc.id)
         .set({ pinned: val }, { merge: true });
  }
+
+  getTasks(compoundId){
+  return this.db.collection('tasks', ref =>
+      ref.where('compoundId', '==', compoundId)).snapshotChanges();
+  }
+
+  createTask(cId, value){
+    return this.db.collection('tasks').add({
+      compoundId: cId,
+      name: value.name,
+      data: "",
+    });
+  }
 }
