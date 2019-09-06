@@ -47,6 +47,13 @@ export class FirebaseService {
         .set({ pinned: val }, { merge: true });
  }
 
+ updateCompoundNotes(cId, data) {
+  return this.db
+    .collection("compounds")
+    .doc(cId)
+    .set({ notes: data }, { merge: true });
+}
+
   getTasks(compoundId){
   return this.db.collection('tasks', ref =>
       ref.where('compoundId', '==', compoundId)).snapshotChanges();

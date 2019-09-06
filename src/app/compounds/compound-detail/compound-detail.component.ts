@@ -47,7 +47,10 @@ export class CompoundDetailComponent implements OnInit {
   openEditNotesDialog() {
     this.editNotesDialogRef = this.dialog.open(EditNotesDialogComponent, {
       width: '600px',
-      data: this.currentCompound
+      data: {
+        id: this.id,
+        notes: this.item.notes
+      }
     });
     this.editNotesDialogRef.afterClosed().subscribe(result => {
       if(this.currentCompound.notes !== result){

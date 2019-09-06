@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MatDialog, MAT_DIALOG_DATA } from '@angular/material';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import { FirebaseService } from '../services/firebase.service';
 
 @Component({
   selector: 'app-edit-notes-dialog',
@@ -12,6 +13,7 @@ export class EditNotesDialogComponent implements OnInit {
   private notesEdit: string;
   constructor(
     private dialogRef: MatDialogRef<EditNotesDialogComponent>,
+    public firebaseService: FirebaseService,
     @Inject(MAT_DIALOG_DATA) private data
   ) { }
 
@@ -19,11 +21,12 @@ export class EditNotesDialogComponent implements OnInit {
     this.notesEdit = this.data.notes;
   }
 
-  /*save(){
-      this.dialogRef.close(this.notesEdit);
-  }*/
+  save(){
+    this.firebaseService.updateCompoundNotes(this.data.id, this.notesEdit);
+    this.dialogRef.close();
+  }
 
   close(){
-    this.dialogRef.close(this.data.notes);
+    this.dialogRef.close();
   }
 }
