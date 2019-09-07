@@ -23,7 +23,15 @@ export class FirebaseService {
   }
 
   updateCompound(id, value){
-    return this.db.collection('compounds').doc(id).set(value);
+    return this.db.collection('compounds').doc(id).set(
+      { 
+        name: value.name,
+        code: value.code,
+        selectivityConditions: value.selectivityConditions,
+        temperature: value.temperature,
+        formula: value.formula
+     }, 
+     { merge: true });
   }
 
   createCompound(value){

@@ -3,6 +3,6 @@
   <ckeditor [(ngModel)]="this.notesEdit" [editor]="Editor" data="{{ this.notesEdit }}"></ckeditor>
 </div>
 <div mat-dialog-actions>
-  <button mat-raised-button (click) = "close()">Close</button>
   <button mat-raised-button class="right" color="primary" cdkFocusInitial (click)="save()">Save</button>
+  <button mat-raised-button (click) = "close()">Close</button>
 </div>

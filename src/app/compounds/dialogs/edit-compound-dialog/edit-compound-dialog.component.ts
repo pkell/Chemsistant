@@ -35,7 +35,6 @@ export class EditCompoundDialogComponent implements OnInit {
   submit() {
     this.firebaseService.updateCompound(this.id, this.form.value)
     this.dialogRef.close();
-    console.log(this.form.value.name);
   }
 
   close(){
