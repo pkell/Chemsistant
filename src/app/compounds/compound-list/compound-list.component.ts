@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ICompound, Compound } from '../compound.model';
 import { ActivatedRoute } from '@angular/router';
-import { AddCompoundDialogComponent } from '../add-compound-dialog/add-compound-dialog.component';
+import { AddCompoundDialogComponent } from '../dialogs/add-compound-dialog/add-compound-dialog.component';
 import { MatDialog, MatDialogRef } from '@angular/material';
-import { EditCompoundDialogComponent } from '../edit-compound-dialog/edit-compound-dialog.component';
+import { EditCompoundDialogComponent } from '../dialogs/edit-compound-dialog/edit-compound-dialog.component';
 import { FirebaseService } from '../services/firebase.service';
 
 @Component({
@@ -24,10 +24,23 @@ export class CompoundListComponent implements OnInit {
     ) { }
 
   ngOnInit() {
-    this.getAllCompounds();
     this.route.paramMap.subscribe(params => {
       console.log(params.get('display'));
       this.display = params.get('display');
+      if(this.display === 'pinned'){
+        if(this.items){
+          this.items = this.items.filter(this.getPinned);
+        }
+        else{
+          this.firebaseService.getCompounds().subscribe(data => {
+            this.items = data;
+            this.items = this.items.filter(this.getPinned);
+          });
+        }
+      }
+      else{
+        this.getAllCompounds();
+      }
     });
   }
 
@@ -67,5 +80,7 @@ export class CompoundListComponent implements OnInit {
     this.firebaseService.updatePinnedStatus(item)
   }
 
-
+  getPinned(element, index, array) { 
+    return (element.payload.doc.data().pinned == true); 
+ } 
 }
