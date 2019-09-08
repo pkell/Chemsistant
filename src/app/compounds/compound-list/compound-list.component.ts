@@ -13,7 +13,9 @@ import { FirebaseService } from '../services/firebase.service';
 })
 export class CompoundListComponent implements OnInit {
   private compounds: ICompound[];
+  searchTerm = '';
   items: Array<any>;
+  displayItems: Array<any>;
   private display: string;
   addCompoundialogRef: MatDialogRef<AddCompoundDialogComponent>;
   editCompoundialogRef: MatDialogRef<EditCompoundDialogComponent>;
@@ -25,21 +27,25 @@ export class CompoundListComponent implements OnInit {
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
-      console.log(params.get('display'));
       this.display = params.get('display');
       if(this.display === 'pinned'){
         if(this.items){
-          this.items = this.items.filter(this.getPinned);
+          this.displayItems = this.items.filter(this.getPinned);
         }
         else{
           this.firebaseService.getCompounds().subscribe(data => {
             this.items = data;
-            this.items = this.items.filter(this.getPinned);
+            this.displayItems = this.items.filter(this.getPinned);
           });
         }
       }
       else{
-        this.getAllCompounds();
+        if(this.items){
+          this.displayItems = this.items;
+        }
+        else{
+          this.getAllCompounds();
+        }
       }
     });
   }
@@ -47,12 +53,7 @@ export class CompoundListComponent implements OnInit {
   getAllCompounds() {
     this.firebaseService.getCompounds().subscribe(data => {
       this.items = data;
-    });
-  }
-
-  getPinnedCompounds() {
-    this.firebaseService.getPinnedCompounds().subscribe(data => {
-      this.items = data;
+      this.displayItems = this.items;
     });
   }
 

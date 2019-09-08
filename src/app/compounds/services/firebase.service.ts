@@ -12,11 +12,6 @@ export class FirebaseService {
       return this.db.collection('compounds').snapshotChanges()
   }
 
-  getPinnedCompounds(){
-    return this.db.collection('compounds', ref =>
-    ref.where('pinned', '==', true)).snapshotChanges()
-}
-
   getCompound(id: string){
     console.log(id);
     return this.db.collection('compounds').doc(id).snapshotChanges();
