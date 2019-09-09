@@ -8,7 +8,7 @@
   </mat-form-field>
 </form>
 <div class="flex-container" fxLayout.xs="column" >
-  <div *ngFor="let compound of displayItems | compoundFilter : this.searchTerm">
+  <div *ngFor="let compound of compounds | compoundFilter : this.searchTerm | pinnedFilter: this.displayPinned">
     <div class="flex-item">
         <mat-card fxFill class="example-card card-fix">
            <div class="card-fix-container">

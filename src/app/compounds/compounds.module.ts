@@ -17,6 +17,7 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { AddTaskDialogComponent } from './dialogs/add-task-dialog/add-task-dialog.component';
 import { FirebaseService } from './services/firebase.service';
 import { CompoundFilter } from './pipes/compound-filter.pipe';
+import { PinnedFilter } from './pipes/pinned.pipe';
 
 @NgModule({
   imports: [
@@ -37,7 +38,7 @@ import { CompoundFilter } from './pipes/compound-filter.pipe';
   ],
   entryComponents: [AddCompoundDialogComponent, EditCompoundDialogComponent, EditNotesDialogComponent, AddTaskDialogComponent],
   declarations: [CompoundListComponent, CompoundDetailComponent, TaskDetailComponent,
-    AddCompoundDialogComponent, EditCompoundDialogComponent, EditNotesDialogComponent, AddTaskDialogComponent, CompoundFilter],
+    AddCompoundDialogComponent, EditCompoundDialogComponent, EditNotesDialogComponent, AddTaskDialogComponent, CompoundFilter, PinnedFilter],
   providers: [FirebaseService]
 })
 export class CompoundsModule { }

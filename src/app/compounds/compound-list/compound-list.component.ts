@@ -12,10 +12,9 @@ import { FirebaseService } from '../services/firebase.service';
   styleUrls: ['./compound-list.component.scss']
 })
 export class CompoundListComponent implements OnInit {
-  private compounds: ICompound[];
+  displayPinned: boolean = false;
   searchTerm = '';
-  items: Array<any>;
-  displayItems: Array<any>;
+  compounds: Array<any>;
   private display: string;
   addCompoundialogRef: MatDialogRef<AddCompoundDialogComponent>;
   editCompoundialogRef: MatDialogRef<EditCompoundDialogComponent>;
@@ -29,31 +28,18 @@ export class CompoundListComponent implements OnInit {
     this.route.paramMap.subscribe(params => {
       this.display = params.get('display');
       if(this.display === 'pinned'){
-        if(this.items){
-          this.displayItems = this.items.filter(this.getPinned);
-        }
-        else{
-          this.firebaseService.getCompounds().subscribe(data => {
-            this.items = data;
-            this.displayItems = this.items.filter(this.getPinned);
-          });
-        }
+        this.displayPinned = true;
       }
       else{
-        if(this.items){
-          this.displayItems = this.items;
-        }
-        else{
-          this.getAllCompounds();
-        }
+        this.displayPinned = false;
       }
+      this.getAllCompounds();
     });
   }
 
   getAllCompounds() {
     this.firebaseService.getCompounds().subscribe(data => {
-      this.items = data;
-      this.displayItems = this.items;
+      this.compounds = data;
     });
   }
 
@@ -80,8 +66,4 @@ export class CompoundListComponent implements OnInit {
   changePinnedStatus(item) {
     this.firebaseService.updatePinnedStatus(item)
   }
-
-  getPinned(element, index, array) { 
-    return (element.payload.doc.data().pinned == true); 
- } 
 }
