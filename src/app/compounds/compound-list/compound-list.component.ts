@@ -5,6 +5,7 @@ import { AddCompoundDialogComponent } from '../dialogs/add-compound-dialog/add-c
 import { MatDialog, MatDialogRef } from '@angular/material';
 import { EditCompoundDialogComponent } from '../dialogs/edit-compound-dialog/edit-compound-dialog.component';
 import { FirebaseService } from '../services/firebase.service';
+import { AuthService } from '../../core/services/auth.service';
 
 @Component({
   selector: 'app-compound-list',
@@ -14,14 +15,15 @@ import { FirebaseService } from '../services/firebase.service';
 export class CompoundListComponent implements OnInit {
   displayPinned: boolean = false;
   searchTerm = '';
-  compounds: Array<any>;
+  compounds: ICompound[];
   private display: string;
   addCompoundialogRef: MatDialogRef<AddCompoundDialogComponent>;
   editCompoundialogRef: MatDialogRef<EditCompoundDialogComponent>;
   constructor(
     private route: ActivatedRoute, 
     private dialog: MatDialog, 
-    public firebaseService: FirebaseService
+    public firebaseService: FirebaseService,
+    public auth: AuthService
     ) { }
 
   ngOnInit() {

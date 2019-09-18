@@ -1,20 +1,37 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { AuthService } from '../../core/services/auth.service';
+import { map } from 'rxjs/operators';
+import { Compound, ICompound } from '../compound.model';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FirebaseService {
 
-  constructor(public db: AngularFirestore) {}
+  constructor(
+    public db: AngularFirestore,
+    public auth: AuthService) {}
 
-  getCompounds(){
-      return this.db.collection('compounds').snapshotChanges()
+  getCompounds(): Observable<ICompound[]>{
+      return this.db.collection<Compound>('compounds', ref =>
+        ref.where('userId', '==', this.auth.currentUserId)).snapshotChanges().pipe(map(items => {      
+          return items.map(a => {
+            const data = a.payload.doc.data() as Compound;
+            const id = a.payload.doc.id;
+            return {id, ...data};   
+          });
+        }));
   }
 
-  getCompound(id: string){
-    console.log(id);
-    return this.db.collection('compounds').doc(id).snapshotChanges();
+  getCompound(id: string) : Observable<ICompound> {
+    return this.db.collection<Compound>('compounds', ref => 
+      ref.where('userId', '==', this.auth.currentUserId)).doc(id).snapshotChanges().pipe(map(action => {
+        const data = action.payload.data() as Compound;
+        const id = action.payload.id;
+        return { id, ...data };
+      }));
   }
 
   updateCompound(id, value){
@@ -24,7 +41,7 @@ export class FirebaseService {
         code: value.code,
         selectivityConditions: value.selectivityConditions,
         temperature: value.temperature,
-        formula: value.formula
+        formula: value.formula,
      }, 
      { merge: true });
   }
@@ -42,11 +59,11 @@ export class FirebaseService {
   }
 
   updatePinnedStatus(data) {
-      let val = data.payload.doc.data().pinned;
+      let val = data.pinned;
       val = ! val;
     return this.db
         .collection("compounds")
-        .doc(data.payload.doc.id)
+        .doc(data.id)
         .set({ pinned: val }, { merge: true });
  }
 

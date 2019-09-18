@@ -15,11 +15,11 @@
              <div class="word-wrap">
              <mat-card-header>
           <mat-card-title>
-            {{ compound.payload.doc.data().name }}
+            {{ compound.name }}
             </mat-card-title>
                
             <mat-card-subtitle>
-              {{ compound.payload.doc.data().formula }}
+              {{ compound.formula }}
             </mat-card-subtitle>
              </mat-card-header>
              </div>
@@ -27,14 +27,14 @@
               
             </mat-card-content>
           <mat-card-actions>
-            <a mat-button href="/compounds/compound/{{ compound.payload.doc.id }}">
+            <a mat-button href="/compounds/compound/{{ compound.id }}">
              <mat-icon aria-hidden="false">
           open_in_browser
         </mat-icon>
         </a>
         <button mat-button (click)="changePinnedStatus(compound)" class="other-theme center">
                 <mat-icon aria-hidden="false" color="accent" aria-label="Pinned">
-                  {{ getIcon(compound.payload.doc.data().pinned) }}
+                  {{ getIcon(compound.pinned) }}
                 </mat-icon>
                 </button>
             <button mat-button (click)="openEditComponentDialog(compound)" class="icon-right">

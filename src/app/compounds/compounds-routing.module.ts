@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { CompoundListComponent } from './compound-list/compound-list.component';
 import { CompoundDetailComponent } from './compound-detail/compound-detail.component';
+import { AuthGuard } from '../core/guards/auth.guard';
 
 const routes: Routes = [
   {

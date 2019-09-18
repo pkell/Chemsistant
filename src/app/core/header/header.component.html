@@ -1,6 +1,7 @@
 <mat-toolbar color="primary">
         <a [routerLink]="['/compounds/all']" class="buttonLink">Chemsistant</a>
         <span class="example-fill-remaining-space"></span>
+        <ng-container *ngIf="displayOptions">
         <div fxFlex="25%">
             <button mat-raised-button color="primary">
                 <a [routerLink]="['/compounds/all']" class="buttonLink"><b>All Compounds</b></a>
@@ -12,5 +13,6 @@
                 <a [routerLink]="['/compounds/pinned']" class="buttonLink">Pinned Compounds</a>
                 </button>
         </div>
+    </ng-container>
 
   </mat-toolbar>

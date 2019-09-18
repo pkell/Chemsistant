@@ -14,7 +14,7 @@ import { FirebaseService } from '../services/firebase.service';
 })
 export class CompoundDetailComponent implements OnInit {
   private tasks;
-  private item;
+  private compound : ICompound;
   private currentCompound: ICompound = new Compound();
   private id: string;
   editNotesDialogRef: MatDialogRef<EditNotesDialogComponent>;
@@ -38,7 +38,7 @@ export class CompoundDetailComponent implements OnInit {
   getCompound() {
     this.firebaseService.getCompound(this.id).subscribe(data => {
       console.log(data);
-      this.item = data.payload.data();
+      this.compound = data;
     });
   }
 
@@ -47,7 +47,7 @@ export class CompoundDetailComponent implements OnInit {
       width: '600px',
       data: {
         id: this.id,
-        notes: this.item.notes
+        notes: this.compound.notes
       }
     });
   }
