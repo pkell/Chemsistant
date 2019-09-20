@@ -1,4 +1,3 @@
-import { ITask } from './task-detail/task.model';
 
 export interface ICompound {
     id: string;
@@ -9,6 +8,7 @@ export interface ICompound {
     formula: string;
     pinned: boolean;
     notes: string;
+    uid: string;
 }
 
 export class Compound {
@@ -20,4 +20,5 @@ export class Compound {
     formula: string;
     pinned: boolean;
     notes: string;
+    uid: string;
 }

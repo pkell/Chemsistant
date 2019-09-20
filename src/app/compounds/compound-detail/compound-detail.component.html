@@ -23,7 +23,7 @@
              <div class="word-wrap">
              <mat-card-header>
           <mat-card-title>
-            {{ task.payload.doc.data().name }}
+            {{ task.name }}
             </mat-card-title>
              </mat-card-header>
              </div>
@@ -31,7 +31,7 @@
               
             </mat-card-content>
           <mat-card-actions>
-            <a class="right" mat-button href="/tasks/task/{{ task.payload.doc.id }}">
+            <a class="right" mat-button href="/tasks/task/{{ task.id }}">
              <mat-icon aria-hidden="false">
           open_in_browser
         </mat-icon>

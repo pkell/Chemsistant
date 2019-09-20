@@ -4,6 +4,7 @@ import { AuthService } from '../../core/services/auth.service';
 import { map } from 'rxjs/operators';
 import { Compound, ICompound } from '../compound.model';
 import { Observable } from 'rxjs';
+import { Task, ITask } from '../task-detail/task.model';
 
 @Injectable({
   providedIn: 'root'
@@ -16,10 +17,10 @@ export class FirebaseService {
 
   getCompounds(): Observable<ICompound[]>{
       return this.db.collection<Compound>('compounds', ref =>
-        ref.where('userId', '==', this.auth.currentUserId)).snapshotChanges().pipe(map(items => {      
-          return items.map(a => {
-            const data = a.payload.doc.data() as Compound;
-            const id = a.payload.doc.id;
+        ref.where('uid', '==', this.auth.currentUserId)).snapshotChanges().pipe(map(compounds => {      
+          return compounds.map(c => {
+            const data = c.payload.doc.data() as Compound;
+            const id = c.payload.doc.id;
             return {id, ...data};   
           });
         }));
@@ -27,9 +28,9 @@ export class FirebaseService {
 
   getCompound(id: string) : Observable<ICompound> {
     return this.db.collection<Compound>('compounds', ref => 
-      ref.where('userId', '==', this.auth.currentUserId)).doc(id).snapshotChanges().pipe(map(action => {
-        const data = action.payload.data() as Compound;
-        const id = action.payload.id;
+      ref.where('uid', '==', this.auth.currentUserId)).doc(id).snapshotChanges().pipe(map(compound => {
+        const data = compound.payload.data() as Compound;
+        const id = compound.payload.id;
         return { id, ...data };
       }));
   }
@@ -54,7 +55,8 @@ export class FirebaseService {
       temperature: parseFloat(value.temperature),
       formula: value.formula,
       pinned: false,
-      notes: ""
+      notes: "",
+      uid: this.auth.currentUserId
     });
   }
 
@@ -74,9 +76,25 @@ export class FirebaseService {
     .set({ notes: data }, { merge: true });
 }
 
-  getTasks(compoundId){
+  getTasks(compoundId) : Observable<ITask[]>{
   return this.db.collection('tasks', ref =>
-      ref.where('compoundId', '==', compoundId)).snapshotChanges();
+      ref.where('compoundId', '==', compoundId).where('uid', '==', this.auth.currentUserId)).snapshotChanges().pipe(map(
+        tasks => {      
+        return tasks.map(task => {
+          const data = task.payload.doc.data() as Task;
+          const id = task.payload.doc.id;
+          return {id, ...data};   
+        });
+      }));;
+  }
+
+  getTask(id: string) : Observable<ITask> {
+    return this.db.collection<Task>('tasks', ref => 
+      ref.where('uid', '==', this.auth.currentUserId)).doc(id).snapshotChanges().pipe(map(task => {
+        const data = task.payload.data() as Task;
+        const id = task.payload.id;
+        return { id, ...data };
+      }));
   }
 
   createTask(cId, value){
@@ -84,6 +102,7 @@ export class FirebaseService {
       compoundId: cId,
       name: value.name,
       data: "",
+      uid: this.auth.currentUserId
     });
   }
 }

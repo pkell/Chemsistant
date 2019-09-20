@@ -13,7 +13,7 @@ import { FirebaseService } from '../services/firebase.service';
   styleUrls: ['./compound-detail.component.scss']
 })
 export class CompoundDetailComponent implements OnInit {
-  private tasks;
+  private tasks: ITask[];
   private compound : ICompound;
   private currentCompound: ICompound = new Compound();
   private id: string;
@@ -28,11 +28,10 @@ export class CompoundDetailComponent implements OnInit {
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
-      //console.log(params.get('id'));
       this.id = params.get('id');
       this.getCompound();
+      this.getAllTasks();
     });
-    this.getAllTasks();
   }
 
   getCompound() {
