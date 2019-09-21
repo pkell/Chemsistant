@@ -18,9 +18,6 @@ import { AddTaskDialogComponent } from './dialogs/add-task-dialog/add-task-dialo
 import { FirebaseService } from './services/firebase.service';
 import { CompoundFilter } from './pipes/compound-filter.pipe';
 import { PinnedFilter } from './pipes/pinned.pipe';
-import { AuthService } from '../core/services/auth.service';
-import { AuthGuard } from '../core/guards/auth.guard';
-import { CoreModule } from '../core/core.module';
 
 @NgModule({
   imports: [

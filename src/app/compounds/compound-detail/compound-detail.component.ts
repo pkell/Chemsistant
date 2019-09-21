@@ -36,7 +36,6 @@ export class CompoundDetailComponent implements OnInit {
 
   getCompound() {
     this.firebaseService.getCompound(this.id).subscribe(data => {
-      console.log(data);
       this.compound = data;
     });
   }

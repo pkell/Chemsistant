@@ -16,6 +16,11 @@ const routes: Routes = [
       canActivate: [AuthGuard]
     },
     {
+      path: 'task',
+      loadChildren: 'app/compounds/compounds.module#CompoundsModule',
+      canActivate: [AuthGuard]
+    },
+    {
       path: 'login',
       component: LoginComponent,
       canActivate: [LoginPageGuard]
