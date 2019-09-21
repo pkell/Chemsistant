@@ -4,7 +4,6 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import * as firebase from 'firebase/app';
 import { Router } from '@angular/router';
 import { AngularFirestoreDocument, AngularFirestore } from '@angular/fire/firestore';
-import { User } from '../user';
 
 @Injectable()
 export class AuthService {
@@ -42,6 +41,13 @@ export class AuthService {
       .then(res => {
         this.router.navigate(['compounds']);
       }, err => reject(err))
+    })
+  }
+
+  doLogout(){
+    return this.afAuth.auth.signOut().then(() => {
+      localStorage.removeItem('user');
+      this.router.navigate(['login']);
     })
   }
 }

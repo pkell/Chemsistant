@@ -5,13 +5,18 @@
         <div fxFlex="25%">
             <button mat-raised-button color="primary">
                 <a [routerLink]="['/compounds/all']" class="buttonLink"><b>All Compounds</b></a>
-                </button>
+            </button>
 
         </div>
         <div fxFlex="25%">
             <button mat-raised-button color="primary">
                 <a [routerLink]="['/compounds/pinned']" class="buttonLink">Pinned Compounds</a>
-                </button>
+            </button>
+        </div>
+        <div fxFlex="25%">
+            <button mat-raised-button color="primary" (click)="logout()">
+                Logout
+            </button>
         </div>
     </ng-container>
 
