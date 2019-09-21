@@ -1,12 +1,13 @@
 import { Pipe, PipeTransform } from '@angular/core';
+import { ICompound } from '../compound.model';
 @Pipe({
     name: 'pinnedFilter'
   })export class PinnedFilter implements PipeTransform {
-    transform(items: any[], displayPinned: boolean): any[] {
-      if(!items) return [];
-      if(!displayPinned) return items;
-      return items.filter( it => {
-        return (it.payload.doc.data().pinned == true);
+    transform(compounds: ICompound[], displayPinned: boolean): any[] {
+      if(!compounds) return [];
+      if(!displayPinned) return compounds;
+      return compounds.filter( c => {
+        return (c.pinned == true);
       });
      }
   }

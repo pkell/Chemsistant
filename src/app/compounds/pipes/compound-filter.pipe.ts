@@ -1,14 +1,15 @@
 import { Pipe, PipeTransform } from '@angular/core';
+import { ICompound } from '../compound.model';
 @Pipe({
     name: 'compoundFilter'
   })export class CompoundFilter implements PipeTransform {
-    transform(items: any[], searchText: string): any[] {
-      if(!items) return [];
-      if(!searchText) return items;
+    transform(compounds: ICompound[], searchText: string): any[] {
+      if(!compounds) return [];
+      if(!searchText) return compounds;
       searchText = searchText.toLowerCase();
-      return items.filter( it => {
-        return (it.payload.doc.data().name.toLowerCase().includes(searchText)
-        || it.payload.doc.data().formula.toLowerCase().includes(searchText));
+      return compounds.filter( c => {
+        return (c.name.toLowerCase().includes(searchText)
+        || c.formula.toLowerCase().includes(searchText));
       });
      }
   }
