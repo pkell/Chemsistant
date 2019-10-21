@@ -15,5 +15,10 @@
 body { background-color: rgb(255, 251, 251); }
 
 
-
+.flex-container {
+    display: flex;
+    justify-content: left;
+    flex-direction: row;
+    flex-flow: row wrap;
+  }
 
