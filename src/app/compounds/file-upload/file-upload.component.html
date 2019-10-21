@@ -1,0 +1,10 @@
+<div class="container">
+    <button><mat-icon aria-hidden="false">
+        cloud_upload
+    </mat-icon>
+    </button>
+    <mat-progress-bar *ngIf="uploadProgress" [mode]="determinate" [value]="uploadProgress"></mat-progress-bar>
+	<div class="result" *ngIf="uploadURL | async">
+	  Upload Complete!
+	</div>
+</div>

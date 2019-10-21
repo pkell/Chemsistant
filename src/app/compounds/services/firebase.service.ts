@@ -76,6 +76,13 @@ export class FirebaseService {
     .set({ notes: data }, { merge: true });
 }
 
+  updateTaskNotes(tId, data){
+    return this.db
+    .collection("tasks")
+    .doc(tId)
+    .set({ data: data}, { merge: true });
+  }
+
   getTasks(compoundId) : Observable<ITask[]>{
   return this.db.collection('tasks', ref =>
       ref.where('compoundId', '==', compoundId).where('uid', '==', this.auth.currentUserId)).snapshotChanges().pipe(map(

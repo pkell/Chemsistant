@@ -18,6 +18,8 @@ import { AddTaskDialogComponent } from './dialogs/add-task-dialog/add-task-dialo
 import { FirebaseService } from './services/firebase.service';
 import { CompoundFilter } from './pipes/compound-filter.pipe';
 import { PinnedFilter } from './pipes/pinned.pipe';
+import { FileUploadComponent } from './file-upload/file-upload.component';
+import {MatProgressBarModule} from '@angular/material/progress-bar'; 
 
 @NgModule({
   imports: [
@@ -34,11 +36,12 @@ import { PinnedFilter } from './pipes/pinned.pipe';
     FlexLayoutModule,
     FlexModule,
     MatIconModule,
-    CKEditorModule
+    CKEditorModule,
+    MatProgressBarModule
   ],
   entryComponents: [AddCompoundDialogComponent, EditCompoundDialogComponent, EditNotesDialogComponent, AddTaskDialogComponent],
   declarations: [CompoundListComponent, CompoundDetailComponent, TaskDetailComponent,
-    AddCompoundDialogComponent, EditCompoundDialogComponent, EditNotesDialogComponent, AddTaskDialogComponent, CompoundFilter, PinnedFilter],
+    AddCompoundDialogComponent, EditCompoundDialogComponent, EditNotesDialogComponent, AddTaskDialogComponent, CompoundFilter, PinnedFilter, FileUploadComponent],
   providers: [FirebaseService]
 })
 export class CompoundsModule { }

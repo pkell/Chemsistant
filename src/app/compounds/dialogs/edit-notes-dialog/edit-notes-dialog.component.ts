@@ -22,8 +22,7 @@ export class EditNotesDialogComponent implements OnInit {
   }
 
   save(){
-    this.firebaseService.updateCompoundNotes(this.data.id, this.notesEdit);
-    this.dialogRef.close();
+    this.dialogRef.close(this.notesEdit);
   }
 
   close(){

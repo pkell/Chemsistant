@@ -44,10 +44,12 @@ export class CompoundDetailComponent implements OnInit {
     this.editNotesDialogRef = this.dialog.open(EditNotesDialogComponent, {
       width: '600px',
       data: {
-        id: this.id,
         notes: this.compound.notes
       }
     });
+    this.editNotesDialogRef.afterClosed().subscribe(result => {
+      this.firebaseService.updateCompoundNotes(this.compound.id, result);
+      });
   }
 
   openAddTaskDialog() {
