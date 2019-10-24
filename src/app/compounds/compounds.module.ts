@@ -20,6 +20,8 @@ import { CompoundFilter } from './pipes/compound-filter.pipe';
 import { PinnedFilter } from './pipes/pinned.pipe';
 import { FileUploadComponent } from './file-upload/file-upload.component';
 import {MatProgressBarModule} from '@angular/material/progress-bar'; 
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { AngularFireStorageModule } from '@angular/fire/storage';
 
 @NgModule({
   imports: [
@@ -37,7 +39,9 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
     FlexModule,
     MatIconModule,
     CKEditorModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatProgressSpinnerModule,
+    AngularFireStorageModule
   ],
   entryComponents: [AddCompoundDialogComponent, EditCompoundDialogComponent, EditNotesDialogComponent, AddTaskDialogComponent],
   declarations: [CompoundListComponent, CompoundDetailComponent, TaskDetailComponent,

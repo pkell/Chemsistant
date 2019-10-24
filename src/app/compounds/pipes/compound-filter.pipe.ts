@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { ICompound } from '../compound.model';
+import { ICompound } from '../models/compound.model';
 @Pipe({
     name: 'compoundFilter'
   })export class CompoundFilter implements PipeTransform {

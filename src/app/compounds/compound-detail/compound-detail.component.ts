@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ICompound, Compound } from '../compound.model';
+import { ICompound, Compound } from '../models/compound.model';
 import { ActivatedRoute } from '@angular/router';
 import { EditNotesDialogComponent } from '../dialogs/edit-notes-dialog/edit-notes-dialog.component';
 import { AddTaskDialogComponent } from '../dialogs/add-task-dialog/add-task-dialog.component';
 import { MatDialogRef, MatDialog } from '@angular/material';
-import { ITask } from '../task-detail/task.model';
+import { ITask } from '../models/task.model';
 import { FirebaseService } from '../services/firebase.service';
 
 @Component({

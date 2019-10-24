@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MatDialog, MatDialogRef } from '@angular/material';
 import { FirebaseService } from '../services/firebase.service';
-import { Task } from './task.model';
+import { Task } from '../models/task.model';
 import { EditNotesDialogComponent } from '../dialogs/edit-notes-dialog/edit-notes-dialog.component';
 
 @Component({

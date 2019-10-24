@@ -1,4 +1,8 @@
-<button mat-raised-button color="primary" (click) = "openAddComponentDialog()">Add Compound</button>
+<button mat-raised-button color="primary" (click) = "openAddComponentDialog()">
+    <mat-icon aria-hidden="false">
+        add_box
+    </mat-icon>
+</button>
 <form class="right">
   <mat-form-field>
       <input matInput type="text" placeholder="Search" [(ngModel)]="this.searchTerm" name="search">

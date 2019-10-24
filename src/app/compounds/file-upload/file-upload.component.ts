@@ -1,4 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Subscription, Observable } from 'rxjs';
+import { AuthService } from '../../core/services/auth.service';
+import { AngularFireStorage } from '@angular/fire/storage';
+import { finalize } from 'rxjs/operators';
+import { timer } from 'rxjs';
+
 
 @Component({
   selector: 'file-upload',
@@ -7,9 +13,43 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FileUploadComponent implements OnInit {
   private uploadProgress;
-  constructor() { }
+  public showUploadComplete: boolean = false;      
+  private subscription: Subscription;
+  private timer: Observable<any>;
+  @Output() uploadComplete = new EventEmitter();
+  constructor(private afStorage: AngularFireStorage, private auth: AuthService) { }
 
   ngOnInit() {
+  }
+
+  uploadFile(event) {
+    console.log("aaa");
+    const randomId = Math.random().toString(36).substring(2);
+    const filePath = `/user/${this.auth.currentUserId}/${randomId}`;
+    const fileRef = this.afStorage.ref(filePath);
+    let task = this.afStorage.upload(filePath, event.target.files[0]);  
+    this.uploadProgress = task.percentageChanges();
+    fileRef.getDownloadURL().subscribe(url => {
+      this.uploadComplete.emit(url)
+      this.setTimer();
+    });
+  }
+
+  public setTimer(){
+    console.log("bbb")
+    this.showUploadComplete = true;
+    this.timer = timer(5000);
+    this.subscription = this.timer.subscribe(() => {
+        // set showUploadComplete to false to hide loading div from view after 5 seconds
+        this.showUploadComplete = false;
+        this.uploadProgress = null;
+    });
+    }
+
+    public ngOnDestroy() {
+    if ( this.subscription && this.subscription instanceof Subscription) {
+      this.subscription.unsubscribe();
+    }
   }
 
 }

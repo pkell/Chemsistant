@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ICompound, Compound } from '../compound.model';
+import { ICompound, Compound } from '../models/compound.model';
 import { ActivatedRoute } from '@angular/router';
 import { AddCompoundDialogComponent } from '../dialogs/add-compound-dialog/add-compound-dialog.component';
 import { MatDialog, MatDialogRef } from '@angular/material';

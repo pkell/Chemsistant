@@ -2,9 +2,10 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AuthService } from '../../core/services/auth.service';
 import { map } from 'rxjs/operators';
-import { Compound, ICompound } from '../compound.model';
+import { Compound, ICompound } from '../models/compound.model';
 import { Observable } from 'rxjs';
-import { Task, ITask } from '../task-detail/task.model';
+import { Task, ITask } from '../models/task.model';
+import { IImage, Image } from '../models/image.model';
 
 @Injectable({
   providedIn: 'root'
@@ -109,6 +110,35 @@ export class FirebaseService {
       compoundId: cId,
       name: value.name,
       data: "",
+      uid: this.auth.currentUserId
+    });
+  }
+
+  getImage(id: string) : Observable<IImage> {
+    return this.db.collection<Task>('images', ref =>
+      ref.where('uid', '==', this.auth.currentUserId)).doc(id).snapshotChanges().pipe(map(image => {
+        const data = image.payload.data() as Image;
+        const id = image.payload.id;
+        return { id, ...data };
+      }));
+  }
+
+  getImagesForTask(taskId: string) : Observable<IImage[]>{
+    return this.db.collection('images', ref =>
+        ref.where('parentId', '==', taskId).where('uid', '==', this.auth.currentUserId)).snapshotChanges().pipe(map(
+          images => {      
+          return images.map(image => {
+            const data = image.payload.doc.data() as Image;
+            const id = image.payload.doc.id;
+            return {id, ...data};   
+          });
+        }));;
+    }
+
+  createImage(parent, downloadUrl){
+    return this.db.collection('images').add({
+      parentId: parent,
+      url: downloadUrl,
       uid: this.auth.currentUserId
     });
   }

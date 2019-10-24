@@ -1,10 +1,15 @@
 <div class="container">
-    <button><mat-icon aria-hidden="false">
+    <button #upload (click)="file.click()" type="button" style="float:right;" mat-raised-button color="primary">
+      <input #file type="file" (change)="uploadFile($event)" accept=".png,.jpg" style="display:none;" />
+      <mat-icon aria-hidden="false">
         cloud_upload
     </mat-icon>
-    </button>
+  </button>
+  <br />
+  <div class="progress">
     <mat-progress-bar *ngIf="uploadProgress" [mode]="determinate" [value]="uploadProgress"></mat-progress-bar>
-	<div class="result" *ngIf="uploadURL | async">
-	  Upload Complete!
-	</div>
+    <div *ngIf="showUploadComplete">
+      You just uploaded this file!
+  </div>
+    </div>
 </div>
