@@ -4,6 +4,7 @@ import { MatDialog, MatDialogRef } from '@angular/material';
 import { FirebaseService } from '../services/firebase.service';
 import { Task } from '../models/task.model';
 import { EditNotesDialogComponent } from '../dialogs/edit-notes-dialog/edit-notes-dialog.component';
+import { IImage } from '../models/image.model';
 
 @Component({
   selector: 'app-task-detail',
@@ -13,6 +14,8 @@ import { EditNotesDialogComponent } from '../dialogs/edit-notes-dialog/edit-note
 export class TaskDetailComponent implements OnInit {
   id: string
   task: Task;
+  images: IImage[];
+  imageUploadTypes: string = "image/*";
   editNotesDialogRef: MatDialogRef<EditNotesDialogComponent>;
   constructor(
     private route: ActivatedRoute, 
@@ -24,10 +27,17 @@ export class TaskDetailComponent implements OnInit {
     this.route.paramMap.subscribe(params => {
       this.id = params.get('id');
       this.getTask();
+      this.getImages();
     });
   }
 
   getTask() {
+    this.firebaseService.getImagesForTask(this.id).subscribe(data => {
+      this.images = data;
+    });
+  }
+
+  getImages() {
     this.firebaseService.getTask(this.id).subscribe(data => {
       this.task = data;
     });
@@ -44,5 +54,9 @@ export class TaskDetailComponent implements OnInit {
       this.firebaseService.updateTaskNotes(this.task.id, result);
       });
   }
+
+  handleUploadComplete(url){
+    this.firebaseService.createImage(this.task.id, url);
+}
 
 }

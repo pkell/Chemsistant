@@ -1,15 +1,16 @@
 <div *ngIf="task">
-<h1>{{ task.name}}</h1>
-  <h3><u>Notes</u> 
-    <button mat-raised-button color="primary"  class="right" (click)="openEditNotesDialog()">
-      <mat-icon aria-hidden="false">
-        edit
-      </mat-icon>
-   </button>
-  </h3>
+  <h1>{{ task.name}}</h1>
+    <h3><u>Notes</u>
+      <button mat-raised-button color="primary"  class="right" (click)="openEditNotesDialog()">
+        <mat-icon aria-hidden="false">
+          edit
+        </mat-icon>
+     </button>
+    </h3>
+   
+    <div [innerHTML]="task.data"></div>
+  <br>
   
-  <div [innerHTML]="task.data"></div>
-<br>
-
-  <h3><u>Images</u> <file-upload class="right"></file-upload></h3>
-</div>
+    <h3><u>Images</u> <file-upload [allowedFiles]="this.imageUploadTypes" (uploadComplete)="handleUploadComplete($event)" class="right"></file-upload></h3>
+    <image-list [images]="this.images"></image-list>
+  </div>

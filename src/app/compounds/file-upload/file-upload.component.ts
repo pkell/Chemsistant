@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { Subscription, Observable } from 'rxjs';
 import { AuthService } from '../../core/services/auth.service';
 import { AngularFireStorage } from '@angular/fire/storage';
@@ -12,37 +12,41 @@ import { timer } from 'rxjs';
   styleUrls: ['./file-upload.component.scss']
 })
 export class FileUploadComponent implements OnInit {
-  private uploadProgress;
+  private uploadProgress: Observable<number>;
   public showUploadComplete: boolean = false;      
   private subscription: Subscription;
   private timer: Observable<any>;
   @Output() uploadComplete = new EventEmitter();
+  @Input() allowedFiles: string;
   constructor(private afStorage: AngularFireStorage, private auth: AuthService) { }
 
   ngOnInit() {
   }
 
-  uploadFile(event) {
-    console.log("aaa");
+ uploadFile(event) {
     const randomId = Math.random().toString(36).substring(2);
     const filePath = `/user/${this.auth.currentUserId}/${randomId}`;
     const fileRef = this.afStorage.ref(filePath);
     let task = this.afStorage.upload(filePath, event.target.files[0]);  
     this.uploadProgress = task.percentageChanges();
-    fileRef.getDownloadURL().subscribe(url => {
-      this.uploadComplete.emit(url)
-      this.setTimer();
-    });
+    task.snapshotChanges().pipe(
+        finalize(() => {
+            fileRef.getDownloadURL().subscribe(url => {
+                this.uploadComplete.emit(url);
+                this.uploadProgress = null;
+                this.setTimer();
+        });
+      })
+    )
+  .subscribe();
   }
 
   public setTimer(){
-    console.log("bbb")
     this.showUploadComplete = true;
     this.timer = timer(5000);
     this.subscription = this.timer.subscribe(() => {
         // set showUploadComplete to false to hide loading div from view after 5 seconds
         this.showUploadComplete = false;
-        this.uploadProgress = null;
     });
     }
 

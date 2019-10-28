@@ -1,0 +1,13 @@
+<div class="flex-container" fxLayout.xs="column" >
+  <div *ngFor="let image of images">
+    <div class="flex-item">
+        <mat-card fxFill class="example-card card-fix">
+           <div class="card-fix-container">
+             <div class="word-wrap">
+              <img mat-card-image src="{{ image.url}}" alt="image">
+           </div>
+          </div>
+  </mat-card>
+    </div>
+</div>
+</div>

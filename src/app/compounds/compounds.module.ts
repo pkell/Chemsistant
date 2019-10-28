@@ -22,6 +22,7 @@ import { FileUploadComponent } from './file-upload/file-upload.component';
 import {MatProgressBarModule} from '@angular/material/progress-bar'; 
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { AngularFireStorageModule } from '@angular/fire/storage';
+import { ImageListComponent } from './image-list/image-list.component';
 
 @NgModule({
   imports: [
@@ -45,7 +46,7 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
   ],
   entryComponents: [AddCompoundDialogComponent, EditCompoundDialogComponent, EditNotesDialogComponent, AddTaskDialogComponent],
   declarations: [CompoundListComponent, CompoundDetailComponent, TaskDetailComponent,
-    AddCompoundDialogComponent, EditCompoundDialogComponent, EditNotesDialogComponent, AddTaskDialogComponent, CompoundFilter, PinnedFilter, FileUploadComponent],
+    AddCompoundDialogComponent, EditCompoundDialogComponent, EditNotesDialogComponent, AddTaskDialogComponent, CompoundFilter, PinnedFilter, FileUploadComponent, ImageListComponent],
   providers: [FirebaseService]
 })
 export class CompoundsModule { }
