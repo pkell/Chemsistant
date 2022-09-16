@@ -28,7 +28,7 @@
     "@ckeditor/ckeditor5-angular": "^1.1.0",
     "@ckeditor/ckeditor5-build-classic": "^12.4.0",
     "@ng-bootstrap/ng-bootstrap": "^4.0.0",
-    "bootstrap": "^3.3.7",
+    "bootstrap": "^3.4.1",
     "core-js": "^2.4.1",
     "firebase": "^6.6.0",
     "font-awesome": "^4.7.0",
